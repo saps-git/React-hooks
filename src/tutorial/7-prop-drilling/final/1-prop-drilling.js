@@ -12,7 +12,7 @@ const PropDrilling = () => {
   };
   return (
     <section>
-      <h3>prop drilling</h3>
+      <h3>prop drilling</h3> 
       <List people={people} removePerson={removePerson} />
     </section>
   );
@@ -38,7 +38,10 @@ const SinglePerson = ({ id, name, removePerson }) => {
   return (
     <div className='item'>
       <h4>{name}</h4>
-      <button onClick={() => removePerson(id)}>remove</button>
+      <button onClick={() => removePerson(id)}>remove</button> 
+      {/* here if we want to use the removePerson method, we have to get is passed from the top, i.e from the main return */}
+      {/* even thought the List function or main function has no use of it */}
+      {/* hence we use context API to make it easier */}
     </div>
   );
 };
