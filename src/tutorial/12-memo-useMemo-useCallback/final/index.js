@@ -6,6 +6,10 @@ import { useFetch } from '../../9-custom-hooks/final/2-useFetch'
 const url = 'https://course-api.com/javascript-store-products'
 
 // every time props or state changes, component re-renders
+
+
+//Remember that the function passed to useMemo runs during rendering. Don’t do anything there 
+//that you wouldn’t normally do while rendering. For example, side effects belong in useEffect, not useMemo.
 const calculateMostExpensive = (data) => {
   return (
     data.reduce((total, item) => {
@@ -22,11 +26,15 @@ const Index = () => {
   const [count, setCount] = useState(0)
   const [cart, setCart] = useState(0)
 
+  //useCallback will return a memoized version of the callback that only changes if one of the dependencies has changed.
   const addToCart = useCallback(() => {
     setCart(cart + 1)
-  }, [cart])
+  }, [cart]) //will render only if there's a change to 'cart'
 
-  const mostExpensive = useMemo(() => calculateMostExpensive(products), [
+
+  // useMemo will only recompute the memoized value when one of the dependencies has changed. 
+  //This optimization helps to avoid expensive calculations on every render.
+  const mostExpensive = useMemo(() => calculateMostExpensive(products), [ 
     products,
   ])
   return (
@@ -41,8 +49,10 @@ const Index = () => {
     </>
   )
 }
-
-const BigList = React.memo(({ products, addToCart }) => {
+// If your component renders the same result given the same props, you can wrap it in a call to React.memo 
+// for a performance boost in some cases by memoizing the result. This means that React will skip rendering the component, 
+// and reuse the last rendered result.
+const BigList = React.memo(({ products, addToCart }) => { 
   // useEffect(() => {
   //   console.count('hello from big list');
   // });

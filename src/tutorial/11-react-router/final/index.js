@@ -23,7 +23,7 @@ const ReactRouterSetup = () => {
         <Route path='/people'>
           <People />
         </Route>
-        <Route path='/person/:id' children={<Person />}></Route>
+        <Route path='/person/:id' children={<Person />}></Route> {/* /:id is the placeholder, children consists the component to hit once this url is fetched */}
         <Route path='*'>
           <Error />
         </Route>

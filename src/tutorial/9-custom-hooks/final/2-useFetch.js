@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 
-export const useFetch = (url) => {
+export const useFetch = (url) => {//always use use keyword in the function name(eg. useFetch), url is the prop being passed
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
 
@@ -9,10 +9,11 @@ export const useFetch = (url) => {
     const products = await response.json();
     setProducts(products);
     setLoading(false);
-  }, [url]);
-
+  }); 
+  
   useEffect(() => {
     getProducts();
-  }, [url, getProducts]);
+  }, [url]); //function will be called when url is changed
+
   return { loading, products };
 };
