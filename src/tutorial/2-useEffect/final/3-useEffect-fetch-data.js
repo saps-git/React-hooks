@@ -24,7 +24,10 @@ const UseEffectFetchData = () => {
 
   useEffect(() => {
     getUsers();
-  }, []); //setUsers as it is a function of useState, hence it will re-render after it's completion, setting useEffect to fire again, hence we add the empty dependency list([]), as the second parameter, so as to avoid useEffect to keep on rendering
+  }, []); //setUsers as it is a function of useState, hence it will re-render after it's completion, 
+  //setting useEffect to fire again, hence we add the empty dependency list([]), as the second parameter, 
+  //so as to avoid useEffect to keep on rendering
+  
   return (
     <>
       <h3>github users</h3>

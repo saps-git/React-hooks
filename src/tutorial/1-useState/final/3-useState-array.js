@@ -14,9 +14,10 @@ const UseStateArray = () => {
         return (
           <div key={id} className='item'>
             <h4>{name}</h4>
-            <button onClick={() => removeItem(id)}>remove</button> {/* here in removeItem() 
-            we are calling that function with a parameter, rather than just passing the function to onClick, 
-            hence the onClick function fire on render, to make it not to, we change it to an arrow function(callback function) */}
+            <button onClick={() => removeItem(id)}>remove</button> {/* here in onClick, we are calling the 
+            function( removeItem() ) with a parameter, rather than just passing the function to onClick or else
+            the onClick function will fire on every render, to make it not to, we change it to an 
+            arrow function(callback function), so it fires only when clicked */}
           </div>
         );
       })}

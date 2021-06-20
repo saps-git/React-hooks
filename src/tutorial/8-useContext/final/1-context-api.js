@@ -17,7 +17,7 @@ const ContextAPI = () => {
   };
   return (
     <PersonContext.Provider value={{ removePerson, people }}> {/* main return needs to be wrapped in the PersonContext.Provider */}
-    {/* value contains the props that you wan't to pass, it will be available to all children components */}
+    {/* value contains the props that you want to pass, it will be available to all children components */}
     {/* the children components then can destructure what ever they want from the contex */}
     {/* as shown below, one child destructures people array, and the other removePerson function */}
       <h3>Context API / useContext</h3>
